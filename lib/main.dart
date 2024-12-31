@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nocks/screens/category_place_screen.dart';
 import 'package:provider/provider.dart';
 import './Providers/places.dart';
 import './screens/ReferralScreen.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           ProjectsScreen.routeName: (ctx) => ProjectsScreen(),
           PartenrsScreen.routeName: (ctx) => PartenrsScreen(),
           Walletscreen.routeName: (ctx) => Walletscreen(),
-          ReferralScreen.routeName: (ctx) => ReferralScreen()
+          ReferralScreen.routeName: (ctx) => ReferralScreen(),
+          CategoryPlaceScreen.routeName: (ctx) => CategoryPlaceScreen()
         },
       ),
     );

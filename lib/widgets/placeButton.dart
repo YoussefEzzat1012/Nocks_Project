@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import '../screens/category_place_screen.dart';
 class Placebutton extends StatelessWidget {
   final String placeName;
   Placebutton(this.placeName);
@@ -24,7 +24,9 @@ class Placebutton extends StatelessWidget {
               border: Border.all(color: Colors.white, width: 0.5),
               borderRadius: BorderRadius.circular(12)),
           child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed(CategoryPlaceScreen.routeName, arguments: placeName);
+              },
               child: Text(
                 placeName,
                 style: TextStyle(color: Colors.black),
