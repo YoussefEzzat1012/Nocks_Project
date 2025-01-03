@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../Providers/places.dart';
+import '../Providers/place.dart';
 import '../widgets/place_item.dart';
 
 class CategoryPlaceScreen extends StatefulWidget {
@@ -14,42 +15,51 @@ class CategoryPlaceScreen extends StatefulWidget {
 class _CategoryPlaceScreenState extends State<CategoryPlaceScreen> {
   var filterdData = [];
   TextEditingController _searchController = TextEditingController();
-  final FocusNode _focusNode = FocusNode();
+  final FocusNode _foucsSearchNode = FocusNode();
 
   void filterSearchData(String inputUser, List<dynamic> dataplaces) {
     setState(() {
-    filterdData = dataplaces
+      filterdData = dataplaces
           .where((item) => item.title
               .toString()
               .toLowerCase()
               .startsWith(inputUser.toLowerCase()))
           .toList();
     });
+
+    // Keep the TextField focused after rebuild
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (_foucsSearchNode.hasFocus == false) {
+        _foucsSearchNode.requestFocus();
+      }
+    });
   }
 
-  Widget buildProductItem (List<dynamic> dataplaces) {
-   
+  Widget buildProductItem(List<dynamic> dataplaces) {
     if (dataplaces.isEmpty) {
       return Center(child: Text('No result found'));
     }
-    return  ListView.builder(
-                          itemBuilder: (ctx, i) => PlaceItem(
-                            imageUrl: dataplaces[i].imageUrl,
-                            title: dataplaces[i].title,
-                            location: dataplaces[i].location,
-                            startingPrice: dataplaces[i].startingPrice,
-                            PaymentPlan: dataplaces[i].PaymentPlan,
-                            delivery: dataplaces[i].delivery,
-                            reward: dataplaces[i].reward,
-                          ),
-                          itemCount: dataplaces.length,
-                        );
+    return ListView.builder(
+      itemBuilder: (ctx, i) => ChangeNotifierProvider<Place>.value(
+        value: dataplaces[i],
+        child: PlaceItem(
+        // imageUrl: dataplaces[i].imageUrl,
+        // title: dataplaces[i].title,
+        // location: dataplaces[i].location,
+        // startingPrice: dataplaces[i].startingPrice,
+        // PaymentPlan: dataplaces[i].PaymentPlan,
+        // delivery: dataplaces[i].delivery,
+        // reward: dataplaces[i].reward,
+      ),
+      ),
+      itemCount: dataplaces.length,
+    );
   }
 
-    @override
+  @override
   void dispose() {
     _searchController.dispose();
-    _focusNode.dispose();
+    _foucsSearchNode.dispose();
     super.dispose();
   }
 
@@ -107,7 +117,7 @@ class _CategoryPlaceScreenState extends State<CategoryPlaceScreen> {
                               onChanged: (val) {
                                 filterSearchData(val, dataplaces);
                               },
-                              focusNode: _focusNode,
+                              focusNode: _foucsSearchNode,
                               decoration: InputDecoration(
                                 hintText: "Search",
                                 hintStyle: TextStyle(
@@ -132,7 +142,10 @@ class _CategoryPlaceScreenState extends State<CategoryPlaceScreen> {
                         ],
                       ),
                       Expanded(
-                        child: buildProductItem(filterdData.isEmpty && _searchController.text.isEmpty? dataplaces : filterdData),
+                        child: buildProductItem(filterdData.isEmpty &&
+                                _searchController.text.isEmpty
+                            ? dataplaces
+                            : filterdData),
                       ),
                     ],
                   );

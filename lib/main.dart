@@ -7,6 +7,7 @@ import './screens/WalletScreen.dart';
 import './screens/PartenrsScreen.dart';
 import './screens/projectsScreen.dart';
 import './screens/tabsScreen.dart';
+import './screens/place_detail_screen.dart';
 void main() {
   runApp(const MyApp());
 }
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
           PartenrsScreen.routeName: (ctx) => PartenrsScreen(),
           Walletscreen.routeName: (ctx) => Walletscreen(),
           ReferralScreen.routeName: (ctx) => ReferralScreen(),
-          CategoryPlaceScreen.routeName: (ctx) => CategoryPlaceScreen()
+          CategoryPlaceScreen.routeName: (ctx) => CategoryPlaceScreen(),
+          PlaceDetailScreen.routeName: (ctx) => PlaceDetailScreen(),
         },
       ),
     );

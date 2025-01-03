@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import '../models/place.dart';
+import '../Providers/place.dart';
 
 class Places with ChangeNotifier {
   Map<String, List<Place>> _places = {
-    'a': [
+    'Nasr City': [
       Place(
+          id: 'p1',
           title: 'Al Borouj',
           imageUrl:
               'https://images.squarespace-cdn.com/content/v1/65a8583b3f2bb32732bff587/8fc00c4d-1fcf-4bda-969e-6d3a8a40be34/image-asset.jpeg',
@@ -12,17 +13,21 @@ class Places with ChangeNotifier {
           startingPrice: 55.5,
           PaymentPlan: '8 years',
           delivery: '2028',
+          isFavorite: false,
           reward: '1%+'),
       Place(
+          id: 'p2',
           title: 'title',
           imageUrl:
               'https://images.squarespace-cdn.com/content/v1/65a8583b3f2bb32732bff587/8fc00c4d-1fcf-4bda-969e-6d3a8a40be34/image-asset.jpeg',
           location: 'location',
           startingPrice: 55.5,
           PaymentPlan: 'PaymentPlan',
+          isFavorite: false,
           delivery: 'delivery',
           reward: 'reward'),
       Place(
+          id: 'p3',
           title: 'title',
           imageUrl:
               'https://images.squarespace-cdn.com/content/v1/65a8583b3f2bb32732bff587/8fc00c4d-1fcf-4bda-969e-6d3a8a40be34/image-asset.jpeg',
@@ -30,10 +35,12 @@ class Places with ChangeNotifier {
           startingPrice: 55.5,
           PaymentPlan: 'PaymentPlan',
           delivery: 'delivery',
+          isFavorite: false,
           reward: 'reward'),
     ],
-    'b': [
+    '6th Octobr': [
       Place(
+          id: 'p4',
           title: 'title',
           imageUrl:
               'https://images.squarespace-cdn.com/content/v1/65a8583b3f2bb32732bff587/8fc00c4d-1fcf-4bda-969e-6d3a8a40be34/image-asset.jpeg',
@@ -41,10 +48,12 @@ class Places with ChangeNotifier {
           startingPrice: 55.5,
           PaymentPlan: 'PaymentPlan',
           delivery: 'delivery',
+          isFavorite: false,
           reward: 'reward')
     ],
-    'c': [
+    'New Cairo': [
       Place(
+        id: 'p4',
           title: 'title',
           imageUrl:
               'https://images.squarespace-cdn.com/content/v1/65a8583b3f2bb32732bff587/8fc00c4d-1fcf-4bda-969e-6d3a8a40be34/image-asset.jpeg',
@@ -52,10 +61,12 @@ class Places with ChangeNotifier {
           startingPrice: 55.5,
           PaymentPlan: 'PaymentPlan',
           delivery: 'delivery',
+          isFavorite: false,
           reward: 'reward')
     ],
-    'c': [
+    'Ain Shams': [
       Place(
+        id: 'p4',
           title: 'title',
           imageUrl:
               'https://images.squarespace-cdn.com/content/v1/65a8583b3f2bb32732bff587/8fc00c4d-1fcf-4bda-969e-6d3a8a40be34/image-asset.jpeg',
@@ -63,10 +74,12 @@ class Places with ChangeNotifier {
           startingPrice: 55.5,
           PaymentPlan: 'PaymentPlan',
           delivery: 'delivery',
+          isFavorite: false,
           reward: 'reward')
     ],
-    'd': [
+    'Dalla City': [
       Place(
+        id: 'p4',
           title: 'title',
           imageUrl:
               'https://images.squarespace-cdn.com/content/v1/65a8583b3f2bb32732bff587/8fc00c4d-1fcf-4bda-969e-6d3a8a40be34/image-asset.jpeg',
@@ -74,6 +87,7 @@ class Places with ChangeNotifier {
           startingPrice: 55.5,
           PaymentPlan: 'PaymentPlan',
           delivery: 'delivery',
+          isFavorite: false,
           reward: 'reward')
     ]
   };
@@ -93,4 +107,6 @@ class Places with ChangeNotifier {
   List<dynamic> fetch_by_the_key(String key) {
     return _places[key]!;
   }
+
+ 
 }
