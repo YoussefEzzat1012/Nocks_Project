@@ -1,10 +1,26 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../Providers/place.dart';
 import '../widgets/auto_image_slider.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../widgets/bottomsheetProjectDetail.dart';
 
 class PlaceDetailScreen extends StatelessWidget {
   static const routeName = '/PlaceDetailScreen';
+
+  void startAddNewTransaction(BuildContext ctx) {
+    showModalBottomSheet(
+        context: ctx,
+        isScrollControlled: true,
+        builder: (_) {
+          return Container(
+            height: 650,
+            child: Bottomsheetprojectdetail(),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     final _ourPlace = ModalRoute.of(context)!.settings.arguments as Place;
@@ -13,6 +29,7 @@ class PlaceDetailScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text('Place Detail Screen'),
       ),
+      resizeToAvoidBottomInset: true,
       body: SingleChildScrollView(
         child: Column(
           //crossAxisAlignment: CrossAxisAlignment.start,
@@ -107,7 +124,7 @@ class PlaceDetailScreen extends StatelessWidget {
                       borderRadius: BorderRadius.circular(15)),
                   margin: EdgeInsets.only(left: 25, right: 25, bottom: 10),
                   child: TextButton(
-                    onPressed: () {},
+                    onPressed: () => startAddNewTransaction(context),
                     child: Text(
                       'Connect With Imkan Masr',
                       style: TextStyle(
@@ -163,7 +180,11 @@ class PlaceDetailScreen extends StatelessWidget {
                       margin: EdgeInsets.only(right: 10, bottom: 10),
                       child: TextButton(
                         onPressed: () {},
-                        child: Icon(FontAwesomeIcons.whatsapp, size: 30, color: Colors.black,),
+                        child: Icon(
+                          FontAwesomeIcons.whatsapp,
+                          size: 30,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ],

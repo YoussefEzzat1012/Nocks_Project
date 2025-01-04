@@ -5,14 +5,17 @@ class HomeItem extends StatelessWidget {
   final String subtitle;
   final IconData icon;
   final String routeName;
+  final int pageIndex;
+  final Function(int) onSelectPage;
 
-  HomeItem({required this.title, required this.subtitle, required this.icon, required this.routeName});
+
+  HomeItem({required this.title, required this.subtitle, required this.icon, required this.routeName,required this.pageIndex, required this.onSelectPage});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Navigator.of(context).pushNamed(routeName);
+        onSelectPage(pageIndex);
       },
       child: Container(
         height: 122,

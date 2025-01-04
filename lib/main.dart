@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
           ReferralScreen.routeName: (ctx) => ReferralScreen(),
           CategoryPlaceScreen.routeName: (ctx) => CategoryPlaceScreen(),
           PlaceDetailScreen.routeName: (ctx) => PlaceDetailScreen(),
+          Tabsscreen.routeName: (ctx) => Tabsscreen()
         },
       ),
     );
