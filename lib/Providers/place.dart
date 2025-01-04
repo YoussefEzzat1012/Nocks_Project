@@ -11,13 +11,17 @@ class Place with ChangeNotifier{
   String reward;
   String imageUrl;
   bool isFavorite;
+  String description;
+  String MasterPlanImage;
 
   Place(
       {
       required this.id,
       required this.title,
       required this.location,
+      required this.MasterPlanImage,
       required this.startingPrice,
+      required this.description,
       required this.PaymentPlan,
       required this.delivery,
       required this.imageUrl,
